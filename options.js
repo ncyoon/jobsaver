@@ -1,6 +1,7 @@
 const DEFAULTS = {
   company: "Company",
   description: "Description",
+  location: "Location",
   link: "Link",
   lastUpdated: "Last Updated",
   stage: "Stage",
@@ -17,6 +18,7 @@ chrome.storage.sync.get(
     const props = { ...DEFAULTS, ...(settings.notionProps || {}) };
     document.getElementById("prop-company").value = props.company;
     document.getElementById("prop-description").value = props.description;
+    document.getElementById("prop-location").value = props.location;
     document.getElementById("prop-link").value = props.link;
     document.getElementById("prop-lastUpdated").value = props.lastUpdated;
     document.getElementById("prop-stage").value = props.stage;
@@ -27,6 +29,7 @@ document.getElementById("saveBtn").addEventListener("click", () => {
   const notionProps = {
     company: document.getElementById("prop-company").value.trim() || DEFAULTS.company,
     description: document.getElementById("prop-description").value.trim() || DEFAULTS.description,
+    location: document.getElementById("prop-location").value.trim() || DEFAULTS.location,
     link: document.getElementById("prop-link").value.trim() || DEFAULTS.link,
     lastUpdated: document.getElementById("prop-lastUpdated").value.trim() || DEFAULTS.lastUpdated,
     stage: document.getElementById("prop-stage").value.trim() || DEFAULTS.stage,

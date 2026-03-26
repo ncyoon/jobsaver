@@ -115,7 +115,6 @@ async function saveToNotion(notionToken, databaseId, props, job, pageUrl) {
 
   const descParts = [];
   if (job.description) descParts.push(job.description);
-  if (job.location) descParts.push(`Location: ${job.location}`);
   if (job.salary) descParts.push(`Salary: ${job.salary}`);
   const fullDescription = descParts.join("\n\n");
 
@@ -128,6 +127,9 @@ async function saveToNotion(notionToken, databaseId, props, job, pageUrl) {
     },
     [props.description]: {
       rich_text: [{ text: { content: fullDescription.slice(0, 2000) } }],
+    },
+    [props.location]: {
+      rich_text: [{ text: { content: job.location || "" } }],
     },
     [props.link]: {
       url: pageUrl,
@@ -268,6 +270,7 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     company: "Company",
     jobTitle: "Job Title",
     description: "Description",
+    location: "Location",
     link: "Link",
     lastUpdated: "Last Updated",
     stage: "Stage",

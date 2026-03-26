@@ -59,6 +59,7 @@ Your database should have these columns (names are configurable in settings):
 | Company | Title |
 | Job Title | Text |
 | Description | Text |
+| Location | Text |
 | Link | URL |
 | Last Updated | Date |
 | Stage | Status |
