@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Saver</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+      </svg>
+      Job Saver
+    </div>
+    <button class="icon-btn" id="openOptions" title="Settings">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Setup needed -->
+  <div class="state center-state" id="state-setup">
+    <div class="icon">⚙️</div>
+    <p>Add your API keys to get started.</p>
+    <button class="btn btn-primary" id="goToOptions">Open Settings</button>
+  </div>
+
+  <!-- Loading -->
+  <div class="state center-state" id="state-loading">
+    <div class="spinner"></div>
+    <p id="loadingMsg">Extracting job info…</p>
+  </div>
+
+  <!-- Review form -->
+  <div class="state" id="state-review">
+    <div class="form-body">
+      <div class="field">
+        <label>Job Title</label>
+        <input type="text" id="f-title" placeholder="Software Engineer" />
+      </div>
+      <div class="field">
+        <label>Company</label>
+        <input type="text" id="f-company" placeholder="Acme Corp" />
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" id="f-location" placeholder="Remote" />
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <textarea id="f-description" placeholder="Role summary…"></textarea>
+      </div>
+      <div class="field">
+        <label>Stage</label>
+        <select id="f-stage">
+          <option>To apply</option>
+          <option>Applied</option>
+          <option>Phone Screen</option>
+          <option>Interview</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+          <option>Withdrawn</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="btn btn-primary" id="saveBtn">Save to Notion</button>
+      <button class="btn btn-secondary" id="retryBtn">Re-extract</button>
+    </div>
+  </div>
+
+  <!-- Saving -->
+  <div class="state center-state" id="state-saving">
+    <div class="spinner"></div>
+    <p>Saving to Notion…</p>
+  </div>
+
+  <!-- Success -->
+  <div class="state success-state" id="state-success">
+    <div class="success-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h3>Saved to Notion</h3>
+    <p id="successCompany"></p>
+  </div>
+
+  <!-- Error -->
+  <div class="state center-state" id="state-error">
+    <div class="icon">⚠️</div>
+    <p class="error-text" id="errorMsg"></p>
+    <button class="btn btn-secondary" id="retryFromError" style="margin-top:4px;">Try Again</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

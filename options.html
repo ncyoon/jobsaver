@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Saver – Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="options-page">
+
+  <div class="options-header">
+    <h1>Job Saver Settings</h1>
+    <p>Configure your API keys and Notion database below.</p>
+  </div>
+
+  <!-- API Keys -->
+  <div class="options-section">
+    <h2>API Keys</h2>
+
+    <div class="field">
+      <label for="anthropicKey">Anthropic API Key</label>
+      <input type="password" id="anthropicKey" placeholder="sk-ant-..." autocomplete="off" />
+      <p class="help-text">
+        Get yours at <strong>console.anthropic.com</strong> → API Keys.
+      </p>
+    </div>
+
+    <div class="field">
+      <label for="notionToken">Notion Integration Token</label>
+      <input type="password" id="notionToken" placeholder="secret_..." autocomplete="off" />
+      <p class="help-text">
+        Go to <strong>notion.so/my-integrations</strong> → New integration → copy the token.
+        Then open your Notion database, click <strong>⋯ → Connections</strong>, and add your integration.
+      </p>
+    </div>
+  </div>
+
+  <!-- Notion Database -->
+  <div class="options-section">
+    <h2>Notion Database</h2>
+
+    <div class="field">
+      <label for="notionDatabaseId">Database ID</label>
+      <input type="text" id="notionDatabaseId" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+      <p class="help-text">
+        Open your database in Notion. The URL looks like:<br />
+        <code>notion.so/your-workspace/<strong>DATABASE_ID</strong>?v=...</code><br />
+        Copy the 32-character ID before the <code>?</code>.
+        Dashes are optional — both formats work.
+      </p>
+    </div>
+  </div>
+
+  <!-- Property Names -->
+  <div class="options-section">
+    <h2>Column Names</h2>
+    <p style="color:#71717a;font-size:12px;margin-bottom:14px;">
+      These must match the exact property names in your Notion database (case-sensitive).
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="field">
+        <label for="prop-company">Company (title field)</label>
+        <input type="text" id="prop-company" placeholder="Company" />
+      </div>
+      <div class="field">
+        <label for="prop-description">Description</label>
+        <input type="text" id="prop-description" placeholder="Description" />
+      </div>
+      <div class="field">
+        <label for="prop-link">Link</label>
+        <input type="text" id="prop-link" placeholder="Link" />
+      </div>
+      <div class="field">
+        <label for="prop-lastUpdated">Last Updated</label>
+        <input type="text" id="prop-lastUpdated" placeholder="Last Updated" />
+      </div>
+      <div class="field">
+        <label for="prop-stage">Stage</label>
+        <input type="text" id="prop-stage" placeholder="Stage" />
+      </div>
+    </div>
+  </div>
+
+  <div class="options-footer">
+    <span class="save-status" id="saveStatus"></span>
+    <button class="btn btn-primary" id="saveBtn">Save Settings</button>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
